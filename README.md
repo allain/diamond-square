@@ -1,4 +1,6 @@
 # Diamond-square
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/PrismarineJS/diamond-square.svg)](https://greenkeeper.io/)
 A diamond square minecraft generation
 
 ## Usage
