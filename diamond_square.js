@@ -1,11 +1,11 @@
 "use strict";
 
-const Chunk = require('prismarine-chunk')("1.8");
 const Vec3 = require('vec3').Vec3;
 const rand = require('random-seed');
 
 class DiamondSquare {
-  constructor(size, roughness, seed) {
+  constructor(size, roughness, seed, version = '1.8') {
+    this.Chunk = require('prismarine-chunk')(version);
     // public fields
     this.size = size;
     this.roughness = roughness;
@@ -96,7 +96,7 @@ function generation({seed,worldHeight=80,waterline=20}={}) {
   const space = new DiamondSquare(size, size / 500, seed);
 
   function generateSimpleChunk(chunkX, chunkZ) {
-    const chunk = new Chunk();
+    const chunk = new this.Chunk();
     const seedRand = rand.create(seed+':'+chunkX+':'+chunkZ);
 
     const worldX = chunkX * 16 + size / 2;
@@ -134,6 +134,7 @@ function generation({seed,worldHeight=80,waterline=20}={}) {
 
     return chunk;
   }
+
   return generateSimpleChunk;
 }
 
